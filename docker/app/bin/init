@@ -1,0 +1,4 @@
+#!/bin/bash
+
+## Exec PHP - FPM
+exec php-fpm
