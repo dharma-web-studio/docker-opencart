@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Install OpenCart"
+
+echo "OpenCart has been installed"

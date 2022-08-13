@@ -1,0 +1,23 @@
+#!/bin/bash
+set -o errexit
+
+[ -z "$1" ] && echo "Please specify a domain name (ex. opencart.docker)" && exit
+
+DOMAIN=$1
+
+echo "Setup domain name ${OPENCART_DOMAIN}"
+
+if ! grep -q "$DOMAIN" /etc/hosts; then
+    echo "Your system password is needed to add an entry to /etc/hosts..."
+    echo "127.0.0.1 ::1 $DOMAIN" | sudo tee -a /etc/hosts
+fi
+
+# Modify config files, HTTP_SERVER
+bin/cli sed -i "s#define(\'HTTP_SERVER\', \'http://localhost/\');#define(\'HTTP_SERVER\', \'https://\' . \$_SERVER[\'HTTP_HOST\'] . \'/\');#g" /var/www/html/config.php
+bin/cli sed -i "s#define(\'HTTP_SERVER\', \'http://localhost/admin/\');#define(\'HTTP_SERVER\', \'https://\' . \$_SERVER[\'HTTP_HOST\'] . \'/admin/\');#g" /var/www/html/admin/config.php
+bin/cli sed -i "s#define(\'HTTP_CATALOG\', \'http://localhost/\');#define(\'HTTP_CATALOG\', \'https://\' . \$_SERVER[\'HTTP_HOST\'] . \'/\');#g" /var/www/html/admin/config.php
+
+echo "Generating SSL certificate..."
+bin/setup-ssl "$DOMAIN"
+
+echo "Setup domain name has been completed"
