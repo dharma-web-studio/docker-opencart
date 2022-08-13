@@ -1,19 +1,22 @@
 <h1 align="center">dharmawebstudio/docker-opencart</h1>
 <div align="center">
-  <p>Dharma Web Studio's Docker Configuration for OpenCart</p>
+  <p>Dharma Web Studio's Docker Configuration for OpenCart, intended to be used as a Docker-based development environment for OpenCart 4</p>
   <img src="https://img.shields.io/badge/opencart-4.0.0.0-blue" alt="Supported OpenCart Versions" />
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
 </div>
-
-## Usage
-
-This configuration is intended to be used as a Docker-based development environment for OpenCart 4.
 
 ## Prerequisites
 
 This setup assumes you are running Docker on a computer with at least 2GB of RAM allocated to Docker, a dual-core, and an SSD hard drive. [Download & Install Docker Desktop](https://www.docker.com/products/docker-desktop).
 
 This configuration has been tested on Mac & Linux.
+
+## Usage
+
+```
+git clone https://github.com/dharmawebstudio/docker-opencart.git ./
+bin/setup
+```
 
 ## Custom CLI Commands
 
@@ -23,6 +26,8 @@ This configuration has been tested on Mac & Linux.
 - `bin/copyfromcontainer`: Copy folders or files from container to host.
 - `bin/copytocontainer`: Copy folders or files from host to container.
 - `bin/fixowns`: This will fix filesystem ownerships within the container.
+- `bin/mv-admin`: Move, rename and update admin directory constant in config file
+- `bin/mv-storage`: Move, rename and update storage directory constant in config file
 - `bin/restart`: Stop and then start all containers.
 - `bin/root`: Run any CLI command as root without going into the bash prompt.
 - `bin/rootnotty`: Run any CLI command as root with no TTY.

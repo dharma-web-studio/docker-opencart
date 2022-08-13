@@ -10,10 +10,10 @@ fi
 NEW_NAME_ADMIN_DIRECTORY=$2
 if [ -z "$NEW_NAME_ADMIN_DIRECTORY" ]
 then
-  NEW_NAME_ADMIN_DIRECTORY=access
+  NEW_NAME_ADMIN_DIRECTORY=backoffice
 fi
 
 bin/cli echo "Rename admin directory from ${CURRENT_NAME_ADMIN_DIRECTORY} to ${NEW_NAME_ADMIN_DIRECTORY}"
-bin/cli mv admin access
+bin/cli mv admin ${NEW_NAME_ADMIN_DIRECTORY}
 bin/cli sed -i "s#$CURRENT_NAME_ADMIN_DIRECTORY/#$NEW_NAME_ADMIN_DIRECTORY/#g" /var/www/html/$NEW_NAME_ADMIN_DIRECTORY/config.php
 bin/cli echo "Admin directory has been renamed"

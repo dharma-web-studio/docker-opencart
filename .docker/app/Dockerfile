@@ -77,5 +77,8 @@ RUN mv /var/www/html/opencart/upload/* /var/www/html/ \
 # Configure and enable gd
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gd
 
+# Fix permissions
+chown -R www-data:www-data /var/www/
+
 ENTRYPOINT [ "/bin/bash", "-c" ]
 CMD ["/usr/local/bin/wait-for-it db:3306 --timeout=60 -- /usr/local/bin/init"]

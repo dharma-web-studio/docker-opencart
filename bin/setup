@@ -1,16 +1,2 @@
 #!/bin/bash
-docker-compose --env-file ./.env/.app up --remove-orphans
-
-# Install OpenCart
-#/usr/local/bin/wait-for-it db:3306 --timeout=60
-#php /var/www/html/install/cli_install.php install --username $OPENCART_USERNAME \
-#                                                  --email $OPENCART_EMAIL" \
-#                                                  --password $OPENCART_PASSWORD \
-#                                                  --http_server "https://$OPENCART_DOMAIN"  \
-#                                                  --db_driver mysqli \
-#                                                  --db_hostname db \
-#                                                  --db_username $MYSQL_USER \
-#                                                  --db_password $MYSQL_PASSWORD \
-#                                                  --db_database $MYSQL_DATABASE" \
-#                                                  --db_port 3306 \
-#                                                  --db_prefix oc_
+docker-compose --env-file ./.env/.app up --detach --remove-orphans
