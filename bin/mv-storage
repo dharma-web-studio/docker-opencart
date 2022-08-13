@@ -1,5 +1,9 @@
 #!/bin/bash
 
-bin/cli mv /var/www/html/storage /var/www/storage
-bin/cli sed -i "s#/var/www/html/storage#/var/www/storage/#g" /var/www/html/config.php
-bin/cli sed -i "s#/var/www/html/storage#/var/www/storage/#g" /var/www/html/admin/config.php
+echo "Moving storage directory"
+
+bin/cli mv /var/www/html/system/storage/ /var/www/storage
+bin/cli sed -i "s#define(\'DIR_STORAGE\', DIR_SYSTEM . \'storage/\');#define(\'DIR_STORAGE\', \'/var/www/storage/\');#g" /var/www/html/config.php
+bin/cli sed -i "s#define(\'DIR_STORAGE\', DIR_SYSTEM . \'storage/\');#define(\'DIR_STORAGE\', \'/var/www/storage/\');#g" /var/www/html/admin/config.php
+
+echo "Storage directory has been moved"

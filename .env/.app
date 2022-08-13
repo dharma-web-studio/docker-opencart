@@ -4,3 +4,4 @@ OPENCART_USERNAME=admin
 OPENCART_EMAIL=email@example.com
 OPENCART_PASSWORD=admin
 OPENCART_DOMAIN=opencart.docker
+OPENCART_ADMIN=backoffice

@@ -66,7 +66,7 @@ RUN mv /var/www/html/opencart/upload/* /var/www/html/ \
     && rm -rf /var/www/html/opencart
 
 # Fix permissions
-RUN chown -R www-data:www-data /var/www/
+RUN chown -R www-data:www-data /var/www/html/
 
 ENTRYPOINT [ "/bin/bash", "-c" ]
 CMD ["/usr/local/bin/wait-for-it db:3306 --timeout=60 -- /usr/local/bin/init"]

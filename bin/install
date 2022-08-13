@@ -18,7 +18,7 @@ bin/setup-domain ${OPENCART_DOMAIN}
 bin/mv-storage
 
 # Rename admin directory to backoffice
-bin/mv-admin admin access
+bin/mv-admin admin ${OPENCART_ADMIN}
 
 # Fix owns
 bin/fixowns

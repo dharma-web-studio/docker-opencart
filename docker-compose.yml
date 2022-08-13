@@ -5,41 +5,30 @@ services:
       context: ./.docker/app/
       args:
         OPENCART_VERSION: ${OPENCART_VERSION}
-    ports:
-      - 80:80
-      - 443:443
-      - 4040:4040
     env_file:
       - ./.env/.app
       - ./.env/.db
-    volumes: &appvolumes
+    volumes:
       -  appdata:/var/www/html
       ## Host mounts with performance penalty, only put what is necessary here
       # - ./application/storage/composer.json:/var/www/html/storage/composer.json:cached
       # - ./application:/var/www/html
-      - ./extension:/var/www/html/extension
-      - ./storage:/var/www/storage
+      # - ./extension:/var/www/html/extension
+      # - ./storage:/var/www/storage
       ## Support for SSL
       - ssldata:/etc/nginx/certs
     depends_on:
       - db
-    extra_hosts:
-      - "app:172.17.0.1"
-      - "server:172.17.0.1"
-      - "db:172.17.0.1"
   server:
     build: ./.docker/server/
     volumes_from:
       - app
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     links:
       - db
-    extra_hosts:
-      - "app:172.17.0.1"
-      - "server:172.17.0.1"
-      - "db:172.17.0.1"
+      - app
   db:
     image: mariadb:latest
     volumes:
