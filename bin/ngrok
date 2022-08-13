@@ -1,0 +1,25 @@
+#!/bin/bash
+
+ngrok_status() {
+    docker-compose -f docker-ngrok.yml ps
+}
+
+ngrok_enable() {
+    docker-compose -f docker-ngrok.yml up
+}
+
+ngrok_disable() {
+    docker-compose -f docker-ngrok.yml down
+}
+
+firstArgLetter="$(echo "$1" | head -c 1)"
+
+if [[ $firstArgLetter == "d" ]]; then
+    ngrok_disable
+elif [[ $firstArgLetter == "e" ]]; then
+    ngrok_enable
+elif [[ $firstArgLetter == "s" ]]; then
+    ngrok_status
+else
+    printf "Please specify either 'disable', 'enable', 'status' as an argument.\nEx: bin/ngrok status\n"
+fi

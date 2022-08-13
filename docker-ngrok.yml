@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ngrok:
+    image: ngrok/ngrok:alpine
+    env_file:
+      - ./.env/.ngrok
+    entrypoint: ["/bin/sh", "-c" , "ngrok http 80"]
+    ports:
+      - 4040:4040
+    extra_hosts:
+      - "app:172.17.0.1"
+      - "server:172.17.0.1"
+      - "db:172.17.0.1"
