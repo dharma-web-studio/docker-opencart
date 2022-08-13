@@ -6,19 +6,13 @@ source .env/.app
 bin/setup
 
 # Install OpenCart by CLI
-bin/cli echo "Install OpenCart"
 bin/install-opencart
-bin/cli echo "OpenCart has been installed"
 
 # Remove install directory
-bin/cli echo "Removing the install directory"
-bin/cli rm -rf install
-bin/cli echo "The install directory has been removed"
+bin/rm-install
 
 # Setup domain and SSL
-bin/cli echo "Setup domain name ${OPENCART_DOMAIN}"
 bin/setup-domain ${OPENCART_DOMAIN}
-bin/cli echo "Setup domain name has been completed"
 
 # Move storage directory
 bin/mv-storage

@@ -5,6 +5,8 @@ set -o errexit
 
 DOMAIN=$1
 
+echo "Setup domain name ${OPENCART_DOMAIN}"
+
 if ! grep -q "$DOMAIN" /etc/hosts; then
     echo "Your system password is needed to add an entry to /etc/hosts..."
     echo "127.0.0.1 ::1 $DOMAIN" | sudo tee -a /etc/hosts
@@ -17,3 +19,5 @@ bin/cli sed -i "s#define(\'HTTP_CATALOG\', \'http://localhost/\');#define(\'HTTP
 
 echo "Generating SSL certificate..."
 bin/setup-ssl "$DOMAIN"
+
+echo "Setup domain name has been completed"

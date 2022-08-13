@@ -44,25 +44,16 @@ RUN { \
         echo 'xdebug.idekey=PHPSTORM'; \
     } | tee -a "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
 
-# Download the latest version of modman
-RUN curl -SL https://raw.githubusercontent.com/colinmollenhour/modman/master/modman -o modman \
-    && chmod +x ./modman \
-    && mv ./modman /usr/local/bin/
-
-# Install composer
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+# Configure and enable gd
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gd
 
 # Download and place mkcert
 RUN curl -SL https://dl.filippo.io/mkcert/latest?for=linux/amd64 -o mkcert \
     && chmod +x ./mkcert \
     && mv ./mkcert /usr/local/bin/mkcert
 
-# Download ngrok
-RUN curl -SL https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz -o ngrok.tgz
-RUN mv ngrok.tgz /usr/local/bin/ngrok.tgz
-RUN tar xvzf /usr/local/bin/ngrok.tgz -C /usr/local/bin \
-    && chmod -R +x /usr/local/bin/ngrok \
-    && rm /usr/local/bin/ngrok.tgz
+# Install composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # Download the latest version of OpenCart
 ARG OPENCART_VERSION
@@ -74,11 +65,8 @@ RUN mv /var/www/html/opencart/upload/* /var/www/html/ \
     && mv /var/www/html/admin/config-dist.php /var/www/html/admin/config.php \
     && rm -rf /var/www/html/opencart
 
-# Configure and enable gd
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gd
-
 # Fix permissions
-chown -R www-data:www-data /var/www/
+RUN chown -R www-data:www-data /var/www/
 
 ENTRYPOINT [ "/bin/bash", "-c" ]
 CMD ["/usr/local/bin/wait-for-it db:3306 --timeout=60 -- /usr/local/bin/init"]
