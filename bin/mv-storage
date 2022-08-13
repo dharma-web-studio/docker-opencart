@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bin/cli mv /var/www/html/storage /var/www/storage

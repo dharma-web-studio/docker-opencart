@@ -1,0 +1,19 @@
+#!/bin/bash
+
+CURRENT_NAME_ADMIN_DIRECTORY=$1
+if [ -z "$CURRENT_NAME_ADMIN_DIRECTORY" ]
+then
+  CURRENT_NAME_ADMIN_DIRECTORY=admin
+fi
+
+
+NEW_NAME_ADMIN_DIRECTORY=$2
+if [ -z "$NEW_NAME_ADMIN_DIRECTORY" ]
+then
+  NEW_NAME_ADMIN_DIRECTORY=access
+fi
+
+bin/cli echo "Rename admin directory from ${CURRENT_NAME_ADMIN_DIRECTORY} to ${NEW_NAME_ADMIN_DIRECTORY}"
+bin/cli mv admin access
+bin/cli sed -i "s#$CURRENT_NAME_ADMIN_DIRECTORY/#$NEW_NAME_ADMIN_DIRECTORY/#g" /var/www/html/$NEW_NAME_ADMIN_DIRECTORY/config.php
+bin/cli echo "Admin directory has been renamed"

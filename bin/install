@@ -1,0 +1,32 @@
+#!/bin/bash
+
+source .env/.app
+
+
+bin/setup
+
+# Install OpenCart by CLI
+# bin/cli /usr/local/bin/install-opencart
+
+# Remove install directory
+bin/cli echo "Removing the install directory"
+bin/cli rm -rf install
+bin/cli echo "The install directory has been removed"
+
+# Setup domain and SSL
+bin/cli echo "Setup domain name ${OPENCART_DOMAIN}"
+bin/setup-domain ${OPENCART_DOMAIN}
+bin/cli echo "Setup domain name has been completed"
+
+# Move storage directory
+# bin/mv-storage
+
+# Rename admin directory to backoffice
+bin/mv-admin admin access
+
+# Fix owns
+bin/fixowns
+
+# Install and activate extensions by CLI
+
+# Clean modification
