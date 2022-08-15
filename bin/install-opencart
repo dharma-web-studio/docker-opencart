@@ -1,4 +1,25 @@
 #!/bin/bash
 echo "Install OpenCart"
 
+source .env/.app
+source .env/.db
+
+## Define APPLICATION
+bin/cli sed -i "s#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');\ndefine(\'APPLICATION\', \'Install\');#g" /var/www/html/install/cli_install.php
+
+## Define HTTP_SERVER
+bin/cli sed -i "s#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');\ndefine(\'HTTP_SERVER\', \'https:\/\/${OPENCART_DOMAIN}\/\');\n#g" /var/www/html/install/cli_install.php
+
+bin/cli php /var/www/html/install/cli_install.php install --username ${OPENCART_USERNAME} \
+                                                      --email ${OPENCART_EMAIL} \
+                                                      --password ${OPENCART_PASSWORD} \
+                                                      --http_server "https://${OPENCART_DOMAIN}/" \
+                                                      --db_driver mysqli \
+                                                      --db_hostname db \
+                                                      --db_username ${MYSQL_USER} \
+                                                      --db_password ${MYSQL_PASSWORD} \
+                                                      --db_database ${MYSQL_DATABASE} \
+                                                      --db_port 3306 \
+                                                      --db_prefix oc_
+
 echo "OpenCart has been installed"
