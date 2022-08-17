@@ -1,4 +1,31 @@
 #!/bin/bash
 echo "Install OpenCart"
 
+source .env/.app
+source .env/.db
+
+## Define APPLICATION
+bin/cli sed -i "s#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');\ndefine(\'APPLICATION\', \'Install\');#g" /var/www/html/install/cli_install.php
+
+## Define HTTP_SERVER
+bin/cli sed -i "s#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');#define(\'DIR_APPLICATION\', DIR_OPENCART . \'install/\');\ndefine(\'HTTP_SERVER\', \'https:\/\/${OPENCART_DOMAIN}\/\');#g" /var/www/html/install/cli_install.php
+
+## Remove wrong statement in cli_install
+bin/cli sed -i "/\\\$db->query(\"UPDATE \`\" . \\\$db_prefix . \"product\` SET \`viewed\` = \'0\'\");/d" /var/www/html/install/cli_install.php
+
+## Require helper/db_schema.php
+bin/cli sed -i "s#require_once(DIR_SYSTEM . \'helper/utf8.php\');#require_once(DIR_SYSTEM . \'helper/utf8.php\');\nrequire_once(DIR_SYSTEM . \'helper/db_schema.php\');#g" /var/www/html/system/startup.php
+
+bin/cli php /var/www/html/install/cli_install.php install --username ${OPENCART_USERNAME} \
+                                                      --email ${OPENCART_EMAIL} \
+                                                      --password ${OPENCART_PASSWORD} \
+                                                      --http_server "https://${OPENCART_DOMAIN}/" \
+                                                      --db_driver mysqli \
+                                                      --db_hostname db \
+                                                      --db_username ${MYSQL_USER} \
+                                                      --db_password ${MYSQL_PASSWORD} \
+                                                      --db_database ${MYSQL_DATABASE} \
+                                                      --db_port 3306 \
+                                                      --db_prefix oc_
+
 echo "OpenCart has been installed"
