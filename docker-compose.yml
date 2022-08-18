@@ -11,10 +11,8 @@ services:
     volumes:
       -  appdata:/var/www/html
       ## Host mounts with performance penalty, only put what is necessary here
-      # - ./application/storage/composer.json:/var/www/html/storage/composer.json:cached
       # - ./application:/var/www/html
       # - ./extension:/var/www/html/extension
-      # - ./storage:/var/www/storage
       ## Support for SSL
       - ssldata:/etc/nginx/certs
     depends_on:
