@@ -3,22 +3,22 @@
 source .env/.app
 
 # Docker compose up
-bin/setup
+bin/setup &&
 
 # Install OpenCart by CLI
-bin/install-opencart
+bin/install-opencart &&
 
 # Remove install directory
-bin/rm-install
+bin/rm-install &&
 
 # Setup domain and SSL
-bin/setup-domain ${OPENCART_DOMAIN}
+bin/setup-domain ${OPENCART_DOMAIN} &&
 
 # Move storage directory
-bin/mv-storage
+bin/mv-storage &&
 
 # Rename admin directory to backoffice
-bin/mv-admin admin ${OPENCART_ADMIN}
+bin/mv-admin admin ${OPENCART_ADMIN} &&
 
 # Fix owns
 bin/fixowns
