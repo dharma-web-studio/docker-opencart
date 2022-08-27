@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose -f docker-compose.yml -f --env-file ./.env/.app up -d
+docker-compose --env-file ./.env/.app up --detach

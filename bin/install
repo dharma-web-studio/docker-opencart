@@ -3,7 +3,10 @@
 source .env/.app
 
 # Docker compose up
-bin/setup &&
+bin/up &&
+
+# Wait for it
+bin/cli /usr/local/bin/wait-for-it db:3306 --timeout=30 &&
 
 # Install OpenCart by CLI
 bin/install-opencart &&

@@ -1,7 +1,7 @@
 <h1 align="center">dharmawebstudio/docker-opencart</h1>
 <div align="center">
   <p>Dharma Web Studio's Docker Configuration for OpenCart 4, intended to be used only as a Docker-based development environment</p>
-  <img src="https://img.shields.io/badge/opencart-4.0.0.0-blue" alt="Supported OpenCart Versions" />
+  <img src="https://img.shields.io/badge/opencart-4.0.1.0-blue" alt="Supported OpenCart Versions" />
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
 </div>
 
@@ -11,15 +11,16 @@ This setup assumes you are running Docker on a computer with at least 2GB of RAM
 
 This configuration has been tested on Mac & Linux.
 
-## Usage
-
-### Quick setup
+## Quick setup
 
 ```
 git clone https://github.com/dharmawebstudio/docker-opencart.git ./
 bin/install
 open https://opencart.docker
 ```
+
+## Extension Development
+ 
 
 ## Custom CLI Commands
 
@@ -29,12 +30,12 @@ open https://opencart.docker
 - `bin/copyfromcontainer`: Copy folders or files from container to host.
 - `bin/copytocontainer`: Copy folders or files from host to container.
 - `bin/fixowns`: This will fix filesystem ownerships within the container.
+- `bin/install`: This will run all actions need it to build, start containers the first time, and install OpenCart in them.
 - `bin/mv-admin`: Move, rename and update admin directory constant in config file
 - `bin/mv-storage`: Move, rename and update storage directory constant in config file
 - `bin/restart`: Stop and then start all containers.
 - `bin/root`: Run any CLI command as root without going into the bash prompt.
 - `bin/rootnotty`: Run any CLI command as root with no TTY.
-- `bin/setup`: Run the OpenCart setup process to build, create, starts containers, install OpenCart from the source code, with optional domain name. Defaults to `opencart.docker`.
 - `bin/setup-domain`: Setup OpenCart domain name.
 - `bin/setup-ssl`: Generate an SSL certificate for one or more domains.
 - `bin/setup-ssl-ca`: Generate a certificate authority and copy it to the host.
