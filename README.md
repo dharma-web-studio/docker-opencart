@@ -19,9 +19,6 @@ bin/install
 open https://opencart.docker
 ```
 
-## Extension Development
- 
-
 ## Custom CLI Commands
 
 - `bin/bash`: Drop into the bash prompt of your Docker container. The `app` container should be mainly used to access the filesystem within Docker.
