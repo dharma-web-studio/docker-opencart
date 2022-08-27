@@ -15,6 +15,8 @@ services:
       # - ./extension:/var/www/html/extension
       ## Support for SSL
       - ssldata:/etc/nginx/certs
+      ## Support for tests
+      - ./tests:/var/www/tests
     depends_on:
       - db
   server:
