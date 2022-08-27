@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bin/composer require --dev squizlabs/php_codesniffer
