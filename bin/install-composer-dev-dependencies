@@ -1,3 +1,4 @@
 #!/bin/bash
 
 bin/composer require --dev squizlabs/php_codesniffer
+bin/composer require --dev object-calisthenics/phpcs-calisthenics-rules
