@@ -1,7 +1,7 @@
 .idea
 .gitmodules
 application/
-extensions/*
-!extensions/.gitkeep
+extension/*
+!extension/.gitkeep
 tests/phpcs/phpcs.xml
 docker-compose.yml
