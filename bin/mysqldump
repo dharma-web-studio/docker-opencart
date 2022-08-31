@@ -1,10 +1,5 @@
 #!/bin/bash
 
 source .env/.db
-if [ -t 0 ]; then
-  # Need tty to run mysql shell
-  bin/cli mysqldump --all-databases -h"${MYSQL_HOST}" -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" "${MYSQL_DATABASE}" > all-databases.sql
-else
-  # Read from stdin, ex: bin/mysql < dbdump.sql
-  bin/clinotty mysqldump --all-databases -h"${MYSQL_HOST}" -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" "${MYSQL_DATABASE}" > all-databases.sql
-fi
+
+bin/cli mysqldump --host=name "${MYSQL_HOST}" --user=name "${MYSQL_USER}" --password "${MYSQL_PASSWORD}" --all-databases > all-databases.sql
