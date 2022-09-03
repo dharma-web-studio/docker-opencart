@@ -71,6 +71,9 @@ bin/phpcs extension/tabs-with-products
 - `bin/install-composer-dev-dependencies`: This will install in the container development dependencies
 - `bin/mv-admin`: Move, rename and update admin directory constant in config file
 - `bin/mv-storage`: Move, rename and update storage directory constant in config file
+- `bin/mysql`: Access to the MySQL terminal
+- `bin/mysqldump`: Access to the MySQL terminal
+- `bin/mv-storage`: Move, rename and update storage directory constant in config file
 - `bin/restart`: Stop and then start all containers.
 - `bin/root`: Run any CLI command as root without going into the bash prompt.
 - `bin/rootnotty`: Run any CLI command as root with no TTY.
