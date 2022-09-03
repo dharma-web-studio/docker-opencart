@@ -2,4 +2,4 @@
 
 source .env/.db
 
-bin/cli mysqldump --host=name "${MYSQL_HOST}" --user=name "${MYSQL_USER}" --password "${MYSQL_PASSWORD}" --all-databases > all-databases.sql
+bin/cli mysqldump --host="${MYSQL_HOST}" --user="${MYSQL_USER}" --password="${MYSQL_PASSWORD}" --all-databases > opencart-docker-db.sql
