@@ -1,4 +1,7 @@
 .idea
+.gitmodules
 application/
-extension/
-storage/
+extension/*
+!extension/.gitkeep
+tests/phpcs/phpcs.xml
+docker-compose.yml
