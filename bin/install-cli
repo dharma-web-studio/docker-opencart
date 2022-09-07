@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source .env/.app
+
+echo "Install OpenCart CLI"
+
+bin/cli git clone -b ${OPENCART_CLI_VERSION} --single-branch https://github.com/dharmawebstudio/cli-opencart  ./cli-opencart
+bin/cli sed -i "s#admin#${OPENCART_ADMIN}#g" ./cli-opencart/modman
+bin/cli modman init
+bin/cli modman link ./cli-opencart
+
+echo "OpenCart CLI has been installed"

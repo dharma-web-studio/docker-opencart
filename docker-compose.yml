@@ -9,7 +9,7 @@ services:
       - ./.env/.app
       - ./.env/.db
     volumes:
-      -  appdata:/var/www/html
+      -  appdata:/var/www
       ## Host mounts with performance penalty, only put what is necessary here
       # - ./application:/var/www/html
       # - ./extensions/name-of-extension:/var/www/html/extension/name-of-extension

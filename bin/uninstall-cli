@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Uninstall OpenCart CLI"
+
+bin/cli modman remove cli-opencart
+
+echo "OpenCart CLI has been uninstalled"
