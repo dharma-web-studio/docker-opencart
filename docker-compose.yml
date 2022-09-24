@@ -17,6 +17,11 @@ services:
       - ssldata:/etc/nginx/certs
       ## Support for tests
       - ./tests:/var/www/tests
+      - ./application/backoffice/controller/cli:/var/www/html/backoffice/controller/cli
+      - ./application/system/library/cli.php:/var/www/html/system/library/cli.php
+      - ./application/system/config/cli.php:/var/www/html/system/config/cli.php
+      - ./application/system/cli-framework.php:/var/www/html/system/cli-framework.php
+      - ./application/cli.php:/var/www/html/cli.php
     depends_on:
       - db
   server:

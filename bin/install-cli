@@ -4,9 +4,10 @@ source .env/.app
 
 echo "Install OpenCart CLI"
 
-bin/cli git clone -b ${OPENCART_CLI_VERSION} --single-branch https://github.com/dharmawebstudio/cli-opencart  ./cli-opencart
-bin/cli sed -i "s#admin#${OPENCART_ADMIN}#g" ./cli-opencart/modman
-bin/cli modman init
-bin/cli modman link ./cli-opencart
-
-echo "OpenCart CLI has been installed"
+bin/cli git clone -b ${OPENCART_CLI_VERSION} --single-branch https://github.com/dharmawebstudio/cli-opencart  cli-opencart
+bin/cli mv cli-opencart/admin/controller/cli ./${OPENCART_ADMIN}/controller/cli
+bin/cli mv cli-opencart/system/config/cli.php ./system/config/cli.php
+bin/cli mv cli-opencart/system/library/cli.php ./system/library/cli.php
+bin/cli mv cli-opencart/system/cli-framework.php ./system/cli-framework.php
+bin/cli mv cli-opencart/cli.php ./cli.php
+bin/fixowns

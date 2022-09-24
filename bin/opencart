@@ -2,4 +2,7 @@
 
 [ -z "$1" ] && echo "Please specify a CLI command (ex. ls)" && exit
 source .env/.app
-bin/cli php ./cli.php ${OPENCART_ADMIN} cli/"$@"
+
+# bin/cli php -dxdebug.mode=debug -dxdebug.start_with_request=yes -dxdebug.idekey=PHPSTORM cli.php ${OPENCART_ADMIN} $@
+
+bin/cli php cli.php ${OPENCART_ADMIN} $@
