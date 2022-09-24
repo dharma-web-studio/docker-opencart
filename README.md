@@ -53,7 +53,7 @@ mv tests/phpcs/phpcs.xml.example tests/phpcs/phpcs.xml
 
 Execute bin over the files of your extension 
 ```
-bin/phpcs extension/tabs-with-products
+bin/phpcs extension/name-of-the-extension
 ```
 
 
