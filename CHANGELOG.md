@@ -10,7 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Release date: Oct, 12th 2022
 
 ### Added
-+ 
++ Add extension administration support via CLI script
++ Add composer support
++ Add PHPCS support for extension development usage
+
+### Fixed
++ Fix mysql scripts
++ Fix copytocontainer script
++ Fix install script
 
 ***
 
