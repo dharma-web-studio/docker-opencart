@@ -12,12 +12,14 @@ services:
       -  appdata:/var/www
       ## Host mounts with performance penalty, only put what is necessary here
       # - ./application:/var/www/html
-      # - ./extensions/name-of-extension:/var/www/html/extension/name-of-extension
+      - ./extension/payment-in-store:/var/www/html/extension/payment-in-store
       ## Support for SSL
       - ssldata:/etc/nginx/certs
       ## Support for tests
       - ./tests:/var/www/tests
+      ## CLI development. Remove once is done.
       - ./application/backoffice/controller/cli:/var/www/html/backoffice/controller/cli
+      - ./application/backoffice/language/en-gb/cli/extension.php:/var/www/html/backoffice/language/en-gb/cli/extension.php
       - ./application/system/library/cli.php:/var/www/html/system/library/cli.php
       - ./application/system/config/cli.php:/var/www/html/system/config/cli.php
       - ./application/system/cli-framework.php:/var/www/html/system/cli-framework.php
