@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Release date: Oct, 12th 2022
 
 ### Added
-+ Add extension administration support via CLI script
++ Add extension administration support via [dharmawebstudio/cli-opencart](https://github.com/dharmawebstudio/cli-opencart) 
 + Add composer support
 + Add PHPCS support for extension development usage
 
