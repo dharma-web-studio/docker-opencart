@@ -65,11 +65,6 @@ RUN mv /var/www/html/opencart/upload/* /var/www/html/ \
     && mv /var/www/html/admin/config-dist.php /var/www/html/admin/config.php \
     && rm -rf /var/www/html/opencart
 
-# Download the latest version of modman
-RUN curl -SL https://raw.githubusercontent.com/colinmollenhour/modman/master/modman -o modman \
-    && chmod +x ./modman \
-    && mv ./modman /usr/local/bin/
-
 # Fix permissions
 RUN chown -R www-data:www-data /var/www/html/
 
