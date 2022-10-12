@@ -23,5 +23,11 @@ bin/mv-storage &&
 # Rename admin directory to backoffice
 bin/mv-admin admin ${OPENCART_ADMIN} &&
 
+# Install Composer Dev Dependencies
+bin/install-composer-dev-dependencies
+
+# Install OpenCart CLI
+bin/install-cli
+
 # Fix owns
 bin/fixowns

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source .env/.app
+
+echo "Install OpenCart CLI"
+
+bin/cli git clone -b ${OPENCART_CLI_VERSION} --single-branch https://github.com/dharmawebstudio/cli-opencart  cli-opencart
+bin/cli mv cli-opencart/admin/controller/cli ./${OPENCART_ADMIN}/controller/cli
+bin/cli mv cli-opencart/admin/language/en-gb-/cli ./${OPENCART_ADMIN}/language/en-gb-/cli
+bin/cli mv cli-opencart/system/config/cli.php ./system/config/cli.php
+bin/cli mv cli-opencart/system/library/cli.php ./system/library/cli.php
+bin/cli mv cli-opencart/system/cli-framework.php ./system/cli-framework.php
+bin/cli mv cli-opencart/cli.php ./cli.php
+bin/fixowns
+
+echo "OpenCart CLI has been installed"

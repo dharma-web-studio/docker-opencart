@@ -74,6 +74,7 @@ bin/phpcs extension/name-of-the-extension
 - `bin/mysql`: Access to the MySQL terminal
 - `bin/mysqldump`: Access to the MySQL terminal
 - `bin/mv-storage`: Move, rename and update storage directory constant in config file
+- `bin/opencart`: Run any [dharmawebstudio/cli-opencart](https://github.com/dharmawebstudio/cli-opencart) command
 - `bin/restart`: Stop and then start all containers.
 - `bin/root`: Run any CLI command as root without going into the bash prompt.
 - `bin/rootnotty`: Run any CLI command as root with no TTY.

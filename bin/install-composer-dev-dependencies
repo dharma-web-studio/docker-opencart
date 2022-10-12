@@ -1,4 +1,8 @@
 #!/bin/bash
 
+echo "Install Composer development dependencies"
+
 bin/composer require --dev squizlabs/php_codesniffer
 bin/composer require --dev object-calisthenics/phpcs-calisthenics-rules
+
+echo "Composer development dependencies have been installed"
