@@ -12,3 +12,5 @@ bin/cli mv cli-opencart/system/library/cli.php ./system/library/cli.php
 bin/cli mv cli-opencart/system/cli-framework.php ./system/cli-framework.php
 bin/cli mv cli-opencart/cli.php ./cli.php
 bin/fixowns
+
+echo "OpenCart CLI has been installed"
