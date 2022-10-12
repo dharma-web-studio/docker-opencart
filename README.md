@@ -2,6 +2,7 @@
 <div align="center">
   <p>Dharma Web Studio's Docker Configuration for OpenCart 4, intended to be used only as a Docker-based development environment</p>
   <img src="https://img.shields.io/badge/opencart-4.0.1.1-blue" alt="Supported OpenCart Versions" />
+  [![Latest stable version](https://img.shields.io/github/release/dharmawebstudio/docker-opencart.svg)](https://github.com/dharmawebstudio/docker-opencart)
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
 </div>
 
