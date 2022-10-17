@@ -4,13 +4,23 @@ source .env/.app
 
 echo "Install OpenCart CLI"
 
-bin/cli git clone -b ${OPENCART_CLI_VERSION} --single-branch https://github.com/dharmawebstudio/cli-opencart  cli-opencart
-bin/cli mv cli-opencart/admin/controller/cli ./${OPENCART_ADMIN}/controller/cli
-bin/cli mv cli-opencart/admin/language/en-gb-/cli ./${OPENCART_ADMIN}/language/en-gb-/cli
-bin/cli mv cli-opencart/system/config/cli.php ./system/config/cli.php
-bin/cli mv cli-opencart/system/library/cli.php ./system/library/cli.php
-bin/cli mv cli-opencart/system/cli-framework.php ./system/cli-framework.php
-bin/cli mv cli-opencart/cli.php ./cli.php
+echo "... Download OpenCart CLI"
+bin/cli git clone --quiet --branch ${OPENCART_CLI_VERSION} --single-branch https://github.com/dharmawebstudio/cli-opencart  cli-opencart
+echo "..  Downloaded OpenCart CLI"
+
+echo "... Installing OpenCart CLI"
+bin/cli mkdir ${OPENCART_ADMIN}/controller/cli
+bin/cli mv cli-opencart/admin/controller/cli ${OPENCART_ADMIN}/controller/
+bin/cli mkdir ${OPENCART_ADMIN}/language/en-gb/cli
+bin/cli mv cli-opencart/admin/language/en-gb/cli ${OPENCART_ADMIN}/language/en-gb/
+bin/cli mv cli-opencart/system/config/cli.php system/config/cli.php
+bin/cli mv cli-opencart/system/library/cli.php system/library/cli.php
+bin/cli mv cli-opencart/system/cli-framework.php system/cli-framework.php
+bin/cli mv cli-opencart/cli.php cli.php
+echo "... Installed OpenCart CLI"
+
+echo "... Fixing Permissions"
 bin/fixowns
+echo "... Fixed Permissions"
 
 echo "OpenCart CLI has been installed"

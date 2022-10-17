@@ -1,13 +1,16 @@
 #!/bin/bash
 
+source .env/.app
+
 echo "Uninstall OpenCart CLI"
 
-bin/cli rm -rf  ./${OPENCART_ADMIN}/controller/cli
-bin/cli rm ./system/config/cli.php
-bin/cli rm ./system/library/cli.php
-bin/cli rm ./system/cli-framework.php
-bin/cli rm ./cli.php
-bin/cli rm -rf ./cli-opencart/
+bin/cli rm -rf ${OPENCART_ADMIN}/controller/cli
+bin/cli rm -rf ${OPENCART_ADMIN}/language/en-gb/cli
+bin/cli rm system/config/cli.php
+bin/cli rm system/library/cli.php
+bin/cli rm system/cli-framework.php
+bin/cli rm cli.php
+bin/cli rm -rf cli-opencart
 bin/fixowns
 
 echo "OpenCart CLI has been uninstalled"
