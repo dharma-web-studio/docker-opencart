@@ -28,7 +28,7 @@ mkdir extension/name-of-the-extension
 ```
 - In docker-compose.yml, remove the comment in the line, and replace the string 'name-of-the-extension', with the recently created directory name 
 ```
-# - ./extension/name-of-extension:/var/www/html/extension/name-of-extension
+- ./extension/name-of-extension:/var/www/html/extension/name-of-extension
 ```
 - Recreates the container to mount a volume in the container, which will contain the extension directory in localhost
 ```
