@@ -12,7 +12,7 @@ services:
       -  appdata:/var/www
       ## Host mounts with performance penalty, only put what is necessary here
       # - ./application:/var/www/html
-      # - ./extension/name-of-extension:/var/www/html/extension/name-of-extension
+      - ./extension/<EXTENSION_CODE>:/var/www/html/extension/<EXTENSION_CODE>
       ## Support for SSL
       - ssldata:/etc/nginx/certs
       ## Support for tests
