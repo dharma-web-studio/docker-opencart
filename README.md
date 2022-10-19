@@ -11,6 +11,10 @@ This setup assumes you are running Docker on a computer with at least 2GB of RAM
 
 This configuration has been tested on Mac & Linux.
 
+
+***
+
+
 ## Usage
 
 ### Quick Setup
@@ -22,18 +26,26 @@ open https://opencart.docker
 
 ### Extension Development
 
-- Create a directory in "extension"
+- Clone your repository in the extension directory, replacing the string '<REMOTE_URL>' and '<EXTENSION_CODE>'. 
 ```
-mkdir extension/name-of-the-extension
+git clone <REMOTE_URL> ./extension/<EXTENSION_CODE>
 ```
-- In docker-compose.yml, remove the comment in the line, and replace the string 'name-of-the-extension', with the recently created directory name 
+- In docker-compose.yml, remove the comment in the line, and replace the string '<EXTENSION_CODE>', with the recently created directory name 
 ```
-# - ./extension/name-of-extension:/var/www/html/extension/name-of-extension
+- ./extension/<EXTENSION_CODE>:/var/www/html/extension/<EXTENSION_CODE>
 ```
 - Recreates the container to mount a volume in the container, which will contain the extension directory in localhost
 ```
 bin/up
 ```
+- Execute the following command to install your extension, replacing the string '<EXTENSION_CODE>'
+```
+bin/opencart extension:install <EXTENSION_CODE>
+``` 
+
+
+***
+
 
 ## Testing Suite and Quality Control
 
@@ -56,6 +68,8 @@ Execute bin over the files of your extension
 bin/phpcs extension/name-of-the-extension
 ```
 
+
+***
 
 
 ## Custom CLI Commands
